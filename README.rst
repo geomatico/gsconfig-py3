@@ -14,7 +14,7 @@ Installing
 
 .. code-block:: shell
 
-    git clone git@github.com:dimitri-justeau/gsconfig-py3.git
+    git clone git@github.com:SatAgro/gsconfig-py3.git
     cd gsconfig-py3
     python setup.py install
 
