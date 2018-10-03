@@ -136,6 +136,7 @@ class FeatureType(_ResourceBase):
     attributes = xml_property("attributes", attribute_list)
     metadata_links = xml_property("metadataLinks", metadata_link_list)
     metadata = xml_property("metadata", metadata)
+    cqlFilter = xml_property("cqlFilter")
 
     writers = {
         'name': write_string("name"),
@@ -151,7 +152,8 @@ class FeatureType(_ResourceBase):
         'projectionPolicy': write_string("projectionPolicy"),
         'keywords': write_string_list("keywords"),
         'metadataLinks': write_metadata_link_list("metadataLinks"),
-        'metadata': write_metadata("metadata")
+        'metadata': write_metadata("metadata"),
+        'cqlFilter': write_string('cqlFilter')
     }
 
 
