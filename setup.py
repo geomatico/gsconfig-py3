@@ -11,10 +11,10 @@ except IOError as e:
 
 setup(
     name='gsconfig-py3',
-    version='1.0.7',
+    version='1.0.8',
     description = "GeoServer REST Configuration",
     long_description = readme_text,
-    url='https://github.com/dimitri-justeau/gsconfig-py3',
+    url='https://github.com/SatAgro/gsconfig-py3',
     author='Dimitri Justeau (IAC/AMAP)',
     author_email='dimitri.justeau@gmail.com',
     package_dir={'': 'src'},

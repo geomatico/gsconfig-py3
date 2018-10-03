@@ -12,12 +12,12 @@ from test import settings
 BASE_PATH = os.path.dirname(os.path.dirname(__file__))
 
 # Test database parameters
-_HOST = "localhost"
+_HOST = "10.8.0.3"
 _PORT = "5432"
 _DB_TYPE = "postgis"
 _DATABASE = os.getenv("DATABASE", "gsconfig_test")
-_USER = os.getenv("DBUSER", "postgres")
-_PASSWORD = os.getenv("DBPASS", "postgres")
+_USER = os.getenv("DBUSER", "gsconfig")
+_PASSWORD = os.getenv("DBPASS", "gsconfig")
 
 DB_PARAMS = {
     'host': _HOST,

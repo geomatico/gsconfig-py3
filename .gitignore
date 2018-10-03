@@ -67,3 +67,5 @@ target/
 *.sqlite
 
 .tfignore
+/docker/geoserver/
+/docker/postgresql/
