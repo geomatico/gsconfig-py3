@@ -21,7 +21,20 @@ Installing
 Getting Help
 ============
 
-gsconfig-py3 keeps the same API as gsconfig, so you can refer to http://boundlessgeo.github.io/gsconfig/ for getting help to use it.
+gsconfig-py3 keeps the same API as gsconfig, so you can refer to http://boundlessgeo.github.io/gsconfig/ for getting help to use it.\
+
+Testing
+=======
+
+To test you must to have installed `docker` and `docker-compose` and then
+
+.. code-block:: bash
+
+    $ cd docker
+    $ docker-compose up
+    $ cd ..
+    $ python setup.py test
+
 
 Sample Layer Creation Code
 ==========================
