@@ -1,0 +1,36 @@
+version: '2.3'
+services:
+  geoserver:
+    image: oscarfonts/geoserver:2.11.3
+    volumes:
+      - ./geoserver:/var/local/geoserver
+    ports:
+      - 8080:8080
+    links:
+      - postgis:postgis
+    container_name: gsconfig_geoserver
+    networks:
+      vpcbr:
+        ipv4_address: 10.8.0.2
+  postgis:
+    image: kartoza/postgis:9.5-2.2
+    environment:
+      - ALLOW_IP_RANGE=0.0.0.0/0
+      - POSTGRES_USER=gsconfig
+      - POSTGRES_PASS=gsconfig
+      - POSTGRES_DBNAME=gsconfig_test
+    volumes:
+      - ./postgresql:/var/lib/postgresql
+    ports:
+      - 5432:5432
+    container_name: gsconfig_postgis
+    networks:
+      vpcbr:
+        ipv4_address: 10.8.0.3
+networks:
+  vpcbr:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.8.0.0/16
+          gateway: 10.8.0.1
