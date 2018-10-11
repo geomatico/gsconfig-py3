@@ -658,10 +658,10 @@ class Catalog:
         """
         params = dict()
         p = "workspaces/{}/coveragestores/{}/coverages/{}"\
-            + "/index/granule/{}.json"
+            + "/index/granules/{}.json"
         cs_url = urljoin(
             self.service_url,
-            p.format(store.workspace, store.name, coverage, granule_id)
+            p.format(store.workspace.name, store.name, coverage, granule_id)
         )
         # DELETE /workspaces/<ws>/coveragestores/<name>/coverages/<coverage>/index/granules/<granule_id>.json
         headers = {
