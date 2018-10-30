@@ -699,6 +699,7 @@ class Catalog:
             "Accept": "application/xml"
         }
         resource_url = store.resource_url
+        params = None
         if jdbc_virtual_table is not None:
             feature_type.metadata = ({
                 'JDBC_VIRTUAL_TABLE': jdbc_virtual_table
