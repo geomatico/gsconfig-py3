@@ -13,7 +13,7 @@ class TestCatalogGeneral(TestCatalogBase):
 
     def test_gsversion(self):
         gsversion = self.catalog.gsversion()
-        pat = re.compile('\d\.\d(\.[\dx]|-SNAPSHOT)')
+        pat = re.compile('\d\.\d{1,2}(\.[\dx]|-SNAPSHOT)')
         self.assertTrue(pat.match(gsversion))
 
     def test_reload(self):

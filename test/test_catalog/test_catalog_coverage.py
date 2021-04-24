@@ -1,7 +1,8 @@
 # coding: utf-8
 
 import os
-from test.test_catalog import TestCatalogBase, BASE_PATH
+
+from test.test_catalog import TestCatalogBase, BASE_PATH, DOCKER, DOCKER_MOUNT_FOLDER
 
 
 class TestCatalogCoverage(TestCatalogBase):
@@ -15,7 +16,10 @@ class TestCatalogCoverage(TestCatalogBase):
         )
         ds = self.catalog.get_store("gsconfig_test_create_imagemosaic",
                                     workspace=ws)
+
         tif_path = os.path.join(BASE_PATH, "data/mosaic/cea_bis_20150101.tif")
+        if DOCKER:
+            tif_path = os.path.join(DOCKER_MOUNT_FOLDER, "data/mosaic/cea_bis_20150101.tif")
         self.catalog.harvest_externalgranule(
             "file://{}".format(tif_path),
             ds,

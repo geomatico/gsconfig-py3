@@ -9,10 +9,13 @@ from geoserver.catalog import Catalog
 from test import settings
 
 
+DOCKER = True
+DOCKER_MOUNT_FOLDER = '/tmp'
+
 BASE_PATH = os.path.dirname(os.path.dirname(__file__))
 
 # Test database parameters
-_HOST = "10.8.0.3"
+_HOST = "192.168.0.21"
 _PORT = "5432"
 _DB_TYPE = "postgis"
 _DATABASE = os.getenv("DATABASE", "gsconfig_test")
@@ -35,25 +38,25 @@ class TestCatalogBase(unittest.TestCase):
     def setUpClass(cls):
         pass
 
-    @classmethod
-    def tearDownClass(cls):
-        sql = """SELECT relname FROM pg_class
-                    WHERE relkind = 'r' AND relname !~ '^(pg_|sql_)'
-                        AND relname != 'spatial_ref_sys';"""
-        conn = psycopg2.connect(
-            database=_DATABASE,
-            user=_USER,
-            password=_PASSWORD,
-            host=_HOST,
-            port=_PORT
-        )
-        cur = conn.cursor()
-        cur.execute(sql)
-        tables = [r[0] for r in cur.fetchall()]
-        if len(tables) == 0:
-            return
-        cur.execute("DROP TABLE {};".format(','.join(tables)))
-        conn.commit()
+    # @classmethod
+    # def tearDownClass(cls):
+    #     sql = """SELECT relname FROM pg_class
+    #                 WHERE relkind = 'r' AND relname !~ '^(pg_|sql_)'
+    #                     AND relname != 'spatial_ref_sys';"""
+    #     conn = psycopg2.connect(
+    #         database=_DATABASE,
+    #         user=_USER,
+    #         password=_PASSWORD,
+    #         host=_HOST,
+    #         port=_PORT
+    #     )
+    #     cur = conn.cursor()
+    #     cur.execute(sql)
+    #     tables = [r[0] for r in cur.fetchall()]
+    #     if len(tables) == 0:
+    #         return
+    #     cur.execute("DROP TABLE {};".format(','.join(tables)))
+    #     conn.commit()
 
     def setUp(self):
         self.catalog = Catalog(settings.SERVICE_URL)
