@@ -1,9 +1,10 @@
 version: '2.3'
 services:
   geoserver:
-    image: oscarfonts/geoserver:2.11.3
+    image: oscarfonts/geoserver:2.17.4
     volumes:
       - ./geoserver:/var/local/geoserver
+      - ../test:/tmp
     ports:
       - 8080:8080
     links:
@@ -13,7 +14,7 @@ services:
       vpcbr:
         ipv4_address: 10.8.0.2
   postgis:
-    image: kartoza/postgis:9.5-2.2
+    image: kartoza/postgis:11.5-2.8
     environment:
       - ALLOW_IP_RANGE=0.0.0.0/0
       - POSTGRES_USER=gsconfig

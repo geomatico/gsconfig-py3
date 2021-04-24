@@ -1,7 +1,7 @@
 # coding: utf-8
 
 import os
-from test.test_catalog import TestCatalogBase, DB_PARAMS, BASE_PATH
+from test.test_catalog import TestCatalogBase, DB_PARAMS, BASE_PATH, DOCKER_MOUNT_FOLDER, DOCKER
 
 
 class TestCatalogDatastore(TestCatalogBase):
@@ -104,8 +104,11 @@ class TestCatalogDatastore(TestCatalogBase):
 
     def test_create_coveragestore_external_geotiff(self):
         ws = self.workspace
+        tif_path = os.path.join(BASE_PATH, "data/Pk50095.tif")
+        if DOCKER:
+            tif_path = os.path.join(DOCKER_MOUNT_FOLDER, "data/Pk50095.tif")
         self.catalog.create_coveragestore_external_geotiff(
             "gsconfig_test_create_coveragestore_ext_geotiff",
-            "file:{}".format(os.path.join(BASE_PATH, "data/Pk50095.tif")),
+            "file:{}".format(tif_path),
             workspace=ws
         )
