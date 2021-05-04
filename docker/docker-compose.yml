@@ -1,7 +1,7 @@
 version: '2.3'
 services:
   geoserver:
-    image: oscarfonts/geoserver:2.17.4
+    image: oscarfonts/geoserver:2.19.0
     volumes:
       - ./geoserver:/var/local/geoserver
       - ../test:/tmp

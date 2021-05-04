@@ -15,7 +15,7 @@ DOCKER_MOUNT_FOLDER = '/tmp'
 BASE_PATH = os.path.dirname(os.path.dirname(__file__))
 
 # Test database parameters
-_HOST = "192.168.0.21"
+_HOST = "postgis"
 _PORT = "5432"
 _DB_TYPE = "postgis"
 _DATABASE = os.getenv("DATABASE", "gsconfig_test")
