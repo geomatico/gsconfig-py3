@@ -5,7 +5,7 @@ gsconfig-py3 is a python3 library for manipulating a GeoServer instance via the 
 
 gsconfig-py3 is a port of gsconfig (https://github.com/boundlessgeo/gsconfig) for python3.
 
-Tested with geoserver 2.8.1.
+Tested with geoserver 2.19.0.
 
 The project is distributed under a `MIT License <LICENSE.txt>`_ .
 
@@ -14,7 +14,7 @@ Installing
 
 .. code-block:: shell
 
-    git clone git@github.com:SatAgro/gsconfig-py3.git
+    git clone git@github.com:dimitri-justeau/gsconfig-py3.git
     cd gsconfig-py3
     python setup.py install
 

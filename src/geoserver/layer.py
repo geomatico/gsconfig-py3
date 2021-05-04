@@ -118,6 +118,34 @@ class Layer(ResourceInfo):
         return self.catalog.get_resource(name)
 
     @property
+    def queryable(self):
+        if self.dom is None:
+            self.fetch()
+        queryableEl = self.dom.find("queryable")
+        if queryableEl is None:
+            return True
+        else:
+            return (queryableEl.text == "true")
+
+    @queryable.setter
+    def queryable(self, queryable):
+        self.dirty["queryable"] = queryable
+
+    @property
+    def opaque(self):
+        if self.dom is None:
+            self.fetch()
+        opaqueEl = self.dom.find("opaque")
+        if opaqueEl is None:
+            return True
+        else:
+            return (opaqueEl.text == "true")
+
+    @opaque.setter
+    def opaque(self, opaque):
+        self.dirty["opaque"] = opaque
+
+    @property
     def default_style(self):
         if 'default_style' in self.dirty:
             return self.dirty['default_style']
@@ -202,5 +230,7 @@ class Layer(ResourceInfo):
         'enabled': write_bool("enabled"),
         'advertised': write_bool("advertised"),
         'default_style': _write_default_style,
-        'alternate_styles': _write_alternate_styles
+        'alternate_styles': _write_alternate_styles,
+        'queryable': write_bool("queryable"),
+        'opaque': write_bool("opaque")
     }

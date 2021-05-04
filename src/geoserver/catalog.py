@@ -836,13 +836,13 @@ class Catalog:
                 for g in groups.findall("layerGroup")]
 
     def create_layergroup(self, name, layers=(), styles=(), bounds=None,
-                          workspace=None):
+                          abstract=None, title=None, workspace=None):
         if any(g.name == name for g in self.get_layergroups()):
             msg = "LayerGroup named {} already exists!"
             raise ConflictingDataError(msg.format(name))
         else:
             return UnsavedLayerGroup(self, name, layers, styles, bounds,
-                                     workspace)
+                                     abstract, title, workspace)
 
     def get_style(self, name, workspace=None):
         """
