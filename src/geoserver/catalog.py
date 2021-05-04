@@ -896,7 +896,6 @@ class Catalog:
         if not overwrite or style is None:
             headers = {
                 "Content-type": "application/xml",
-                "Accept": "application/xml"
             }
             xml = "<style><name>{0}</name><filename>{0}.sld"\
                   + "</filename></style>"
@@ -907,7 +906,6 @@ class Catalog:
                 raise UploadError(r.text)
         headers = {
             "Content-type": style.content_type,
-            "Accept": "application/xml"
         }
         body_href = style.body_href
         if raw:
